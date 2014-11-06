@@ -1,0 +1,33 @@
+ e.prototype.colorize = function(a, b, c) {
+        var d, e, f, g, h, i, j, k, l, m, n, o, p, q, r;
+        if (!a || !a.length)
+          return;
+        o = {bgcol: "background",col: "color",bdcol: "border-color"}, a.toggleClass("no-compl", !this.hasCompl()), a.toggleClass("no-secs", !this.hasSecs()), p = b ? "sorted" : "byPalette", r = ["pri", "sec1", "sec2", "compl"];
+        for (l in r) {
+          g = r[l], h = g;
+          for (k = q = 0; q <= 4; k = ++q) {
+            e = this.getColorCode(h, k, p, c, -1), f = this.getColorCode(h, k, "byLum", c, -1), i = e.getHex(), j = f.getHex();
+            for (m in o)
+              n = o[m], d = a.find("." + m + "-" + g + "-" + k).css(n, "#" + i), m === "bgcol" && (d.prop("title", i), d.attr("col-data", i)), d = a.find("." + m + "-" + g + "-lum-" + k).css(n, "#" + j), m === "bgcol" && (d.prop("title", j), d.attr("col-data", j))
+          }
+        }
+        return !1
+        
+        colorize
+        getColorCode
+  ////
+  // calcColoTable
+var a, b, c;
+        this.colorTable = {byPalette: {},sorted: {},byLum: {}}, c = this, b = function(a, b) {
+          var c, d;
+          return c = a.getLum(), d = b.getLum(), c < d ? 1 : c > d ? -1 : 0
+        }, a = function(a) {
+          var d, e, f, h, i, j, k, l;
+          d = c.col[a];
+          if (!d)
+            return null;
+          i = [], j = [], k = [];
+          for (f = l = 0; l <= 4; f = ++l)
+            e = new g(d.baseHSV.h), h = c.getVar(f, a), e.setSV(h[0], h[1]), i[f] = e, k[f] = e, f > 0 && (j[f] = e);
+          return j.sort(b), j.unshift(i[0]), k.sort(b), c.colorTable.byPalette[a] = i, c.colorTable.sorted[a] = j, c.colorTable.byLum[a] = k
+        }, a("pri"), a("sec1"), a("sec2"), a("compl")
