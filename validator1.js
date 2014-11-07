@@ -6,7 +6,7 @@ var f = {
   }
 }
  //define("color.variator1.class", ["color.wheel", "color.presets", "geometry.point.class", "lib.point.follower", "app.events", "util"], function(a, b, c, d, e, f) {
-var val = function(){
+var validator = function(){
     var g, h;
     h = [[.66667, .66667], [.33333, 1], [.5, .83333], [.83333, .5], [1, .33333]]
     g = function() {
@@ -17,7 +17,7 @@ var val = function(){
         e = this,
         this.options = {treshold: .5,
             minDistance: .05,
-            onChange: null}
+            }
         
         this.defs = [], this.point = [], this.values = [],
         this.setVals(h)
@@ -134,18 +134,7 @@ var val = function(){
             this.locToPoint(this.point[e], f)
           }
         }
-        return this.calcVals(), this.onChange()
-      },/* a.prototype.moveSec = function(a, b, c, e) {
-        var f, g, h, i, j, k, l, m;
-        if (e)
-          return this.point[a].setXY(b, c), this.point[a].doLimit(), k = this.pointToLoc(this.point[0]), j = this.pointToLoc(this.point[a]), this.setDef(a, d.getDef(k, j)), this.calcVals(), this.onChange();
-        l = this.point[a].getCopy(), m = this.point[a].getCopy(), m.setXY(b, c), m.doLimit(), g = this.point[0].getDistance(l), h = this.point[0].getDistance(m), g < this.options.minDistance && (g = this.options.minDistance), h < this.options.minDistance && (h = this.options.minDistance), f = this.point[0].getAngle(m, l), i = g > 0 ? h / g : 1;
-        if (h < 1)
-          return this.rotate(f, i)
-      }*/
-       a.prototype.onChange = function() {
-        //if (this.inited)
-          //return this.palette.varsChanged()
+        return this.calcVals()
       }
       return a
     }() 
@@ -153,7 +142,9 @@ var val = function(){
     return g
 }
   //})
-var g = val()
-var gg = new g()
-gg.setMainVal([0.52,1])
-console.log(gg.values) // s,v 
+module.exports = validator/*function(h){
+  var g = ()
+  var gg = new g()
+  gg.setMainVal([0.52,1])
+  
+}*/
